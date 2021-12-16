@@ -1,9 +1,17 @@
 player.on('error', (queue, error) => {
     console.log(`Error emitted from the queue ${error.message}`);
+    queue.metedata.send(`Error ${error.message}, reconnecting... ❌`);
+    var chan = queue.connection.channel;
+    queue.connection.end();
+    queue.connect(chan);
 });
 
 player.on('connectionError', (queue, error) => {
     console.log(`Error emitted from the connection ${error.message}`);
+    queue.metedata.send(`Error ${error.message}, reconnecting... ❌`);
+    var chan = queue.connection.channel;
+    queue.connection.end();
+    queue.connect(chan);
 });
 
 player.on('trackStart', (queue, track) => {
