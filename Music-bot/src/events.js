@@ -10,7 +10,8 @@ player.on('connectionError', (queue, error) => {
     console.log(`Error emitted from the connection ${error.message}`);
     queue.metedata.send(`Error ${error.message}, reconnecting... ❌`);
     var chan = queue.connection.channel;
-    queue.connection.end();
+    //queue.connection.end();
+    queue.destroy();
     queue.connect(chan);
 });
 
