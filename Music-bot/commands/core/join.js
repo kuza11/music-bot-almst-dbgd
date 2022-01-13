@@ -11,5 +11,5 @@ module.exports = {
             await player.deleteQueue(message.guild.id);
             return message.channel.send(`I can't join the voice channel ${message.author}... try again ? ❌`);
         }
-    }
+    },
 }
