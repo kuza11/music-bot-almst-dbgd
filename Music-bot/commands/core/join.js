@@ -5,6 +5,7 @@ module.exports = {
     voiceChannel: true,
 
     async execute(message){
+        const queue = await player.createQueue(message.guild);
         try {
             if (!queue.connection) await queue.connect(message.member.voice.channel);
         } catch {
